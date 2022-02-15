@@ -155,7 +155,7 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
    *  writing to a file. 
    */
   public String getDecompressedFileStr(String[] decompressed){
-     //String data = "";
+     String data = "";
    //TODO: Implement this method
       return null;
   }
