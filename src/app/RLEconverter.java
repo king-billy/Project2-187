@@ -134,7 +134,17 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
    */
    public String decompressLine(String line, char[] fileChars){
       //TODO: Implement this method
-        return null;
+      String decomressed="";
+      Scanner scnr = new Scanner(line);
+      while(scnr.hasNextInt()){
+        for(char letter : fileChars){
+          for(int i = 0; i < scnr.nextInt(); i++){
+            decomressed += letter;
+          }
+        }
+      }
+      scnr.close();
+      return decomressed;
    }
     /*
    *  This method iterates through all of the compressed lines and writes 
