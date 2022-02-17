@@ -134,17 +134,18 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
    */
    public String decompressLine(String line, char[] fileChars){
       //TODO: Implement this method
-      String decomressed="";
-      Scanner scnr = new Scanner(line);
-      while(scnr.hasNextInt()){
+      String decompressed="";
+      String[] lines = line.split(",");
+      for(int i = 0; i < lines.length; i+=0){
         for(char letter : fileChars){
-          for(int i = 0; i < scnr.nextInt(); i++){
-            decomressed += letter;
+          
+          for(int j = 0; j < Integer.parseInt(lines[i]); j++){
+            decompressed += letter;
           }
+          i++;
         }
       }
-      scnr.close();
-      return decomressed;
+      return decompressed;
    }
     /*
    *  This method iterates through all of the compressed lines and writes 
@@ -157,7 +158,12 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
    */
   public String[] decompressAllLines(String[] lines, int dataSize){
      //TODO: Implement this method
-      return null;
+     String[] decompressedAll = new String[dataSize-1];
+     char[] fileChars1 = lines[0].toCharArray();
+     for(int i = 1; i < dataSize; i++){
+      decompressedAll[i-1] += decompressLine(lines[i], fileChars1);
+     }
+     return decompressedAll;
   }
   
   /*
@@ -165,9 +171,12 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
    *  writing to a file. 
    */
   public String getDecompressedFileStr(String[] decompressed){
-     String data = "";
    //TODO: Implement this method
-      return null;
+   StringBuilder fileStr1 = new StringBuilder();
+   for(String n : decompressed){
+     fileStr1.append(n).append('\n');
+   }
+     return fileStr1.toString();
   }
 
   // assume the file contains only 2 different ascii characters.
