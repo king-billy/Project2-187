@@ -138,10 +138,10 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
       String[] lines = line.split(",");
       int i = 0;
       while(i < lines.length){
-        for(char letter : fileChars){
+        for(char letters : fileChars){
           
-          for(int j = 0; j < Integer.parseInt(lines[i]); j++){
-            decompressed += letter;
+          for(int j = Integer.parseInt(lines[i]); j > 0; j--){
+            decompressed += letters;
           }
           i++;
         }
