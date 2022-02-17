@@ -136,7 +136,7 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
       //TODO: Implement this method
       String decompressed="";
       String[] lines = line.split(",");
-      for(int i = 0; i < lines.length; i+=0){
+      for(int i = 0; i < lines.length;){
         for(char letter : fileChars){
           
           for(int j = 0; j < Integer.parseInt(lines[i]); j++){
