@@ -173,8 +173,8 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
      //TODO: Implement this method
      String[] decompressedAll = new String[dataSize];
      char[] fileChars1 = discoverAsciiChars(lines, dataSize);
-     for(int i = 1; i < dataSize; i++){
-      decompressedAll[i-1] += decompressLine(lines[i], fileChars1);
+     for(int i = 0; i < dataSize; i++){
+      decompressedAll[i] = decompressLine(lines[i], fileChars1);
      }
      return decompressedAll;
   }
