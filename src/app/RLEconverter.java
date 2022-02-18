@@ -136,22 +136,11 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
       //TODO: Implement this method
       String decomp = "";
       String[] lines = line.split(",");
-      int element;
       int k = 2;
 
       for(int i = 0; i < lines.length; i++){
-        element = Integer.parseInt(lines[i]);
-        if((k%2!=0)){
-          for (int j = 0; j<element; j++){
-            decomp += fileChars[1];
-          }
-          if(i+1<lines.length){
-            k++;
-            continue;
-          }
-        }
         if((k%2)==0){
-          for(int j = 0; j<element; j++){
+          for(int j = 0; j<Integer.parseInt(lines[i]); j++){
             decomp += fileChars[0];
           }
           if(i+1<lines.length){
@@ -159,42 +148,16 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
             continue;
           }
         }
+        if((k%2!=0)){
+          for (int j = 0; j<Integer.parseInt(lines[i]); j++){
+            decomp += fileChars[1];
+          }
+          if(i+1<lines.length){
+            k++;
+            continue;
+          }
+        }
       }
-   /*   String decompressed="";
-      String[] lines = line.split(",");
-      int a;
-      int b = 2;
-      for(int i = 0; i < lines.length; i++){
-        a = Integer.parseInt(lines[i]);
-        if((b%2) != 0){
-          for (int j = 0; j < a; j++){
-            decompressed += fileChars[1];
-          }
-        if(i+1<line.length()){
-          b++;
-          continue;
-        }
-        if((b%2)==0){
-          for(int j = 0; j<a; j++){
-            decompressed += a;
-          }
-        if(i+1<lines.length){
-          b++;
-          continue;
-        }
-        }
-        }
-        /*
-        for(char letters : fileChars){
-          
-          for(int j = Integer.parseInt(lines[i]); j > 0; j--){
-            decompressed += letters;
-          }
-          i++;
-        }
-        *
-      }
-      */
       return decomp;
    }
     /*
@@ -232,7 +195,22 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
   // assume the file contains only 2 different ascii characters.
   public char[] discoverAsciiChars(String[] decompressed, int dataSize){
 //TODO: Implement this method
-  return null;
+//huh, wtf is this?
+    char[] asciiChars = new char[2];
+    for(int i = 0; i < dataSize; i++){
+      if(i == 0){
+        asciiChars[0] = decompressed[i].charAt(0);
+      }
+      for(int j = 0; j < decompressed[i].length(); j++){
+        if(decompressed[i].charAt(j) != asciiChars[0]){
+          asciiChars[1] = decompressed[i].charAt(j);
+          continue;
+        }
+      }
+    }
+    
+    
+    return asciiChars;
 }
 
 
