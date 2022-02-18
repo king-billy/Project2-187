@@ -134,7 +134,33 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
    */
    public String decompressLine(String line, char[] fileChars){
       //TODO: Implement this method
-      String decompressed="";
+      String decomp = "";
+      String[] lines = line.split(",");
+      int element;
+      int k = 2;
+
+      for(int i = 0; i < lines.length; i++){
+        element = Integer.parseInt(lines[i]);
+        if((k%2!=0)){
+          for (int j = 0; j<element; j++){
+            decomp += fileChars[1];
+          }
+          if(i+1<lines.length){
+            k++;
+            continue;
+          }
+        }
+        if((k%2)==0){
+          for(int j = 0; j<element; j++){
+            decomp += fileChars[0];
+          }
+          if(i+1<lines.length){
+            k++;
+            continue;
+          }
+        }
+      }
+   /*   String decompressed="";
       String[] lines = line.split(",");
       int a;
       int b = 2;
@@ -166,9 +192,10 @@ public String getCompressedFileStr(String[] compressed, char[] fileChars) {
           }
           i++;
         }
-        */
+        *
       }
-      return decompressed;
+      */
+      return decomp;
    }
     /*
    *  This method iterates through all of the compressed lines and writes 
